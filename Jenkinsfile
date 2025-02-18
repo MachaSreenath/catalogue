@@ -22,7 +22,6 @@ pipeline {
                 }
             }
         }
-        stages {
         stage('Install Dependencies') {
             steps {
                 sh """
@@ -30,7 +29,7 @@ pipeline {
                 """
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
                 echo 'Testing..'
             }
