@@ -4,15 +4,30 @@ pipeline {
             label 'AGENT-1'
         }
     }
+    environment {
+        packageVersion = ''
+    }
     options {
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
     }
     // build
     stages {
-        stage('Clone') {
+        stage('Get the version') {
             steps {
-                echo 'Building..'
+                script {
+                    def packageJson = readJSON file: 'package.json' 
+                    packageVersion = packageJson.version
+                    echo "application version: $packageVersion"
+                }
+            }
+        }
+        stages {
+        stage('Install Dependencies') {
+            steps {
+                sh """
+                    npm install
+                """
             }
         }
         stage('Test') {
@@ -24,8 +39,6 @@ pipeline {
             steps {
                 sh """
                     echo  "Here I wrote shell script"
-                    echo "$GREETING"
-                    #sleep 10
                 """
             }
         }
