@@ -60,9 +60,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh """
-                    echo  "Here I wrote shell script"
-                """
+                build job: "catalogue-deploy", wait: true
             }
         }
     }
