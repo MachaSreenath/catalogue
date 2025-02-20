@@ -54,19 +54,21 @@ pipeline {
                         classifier: '',
                         file: 'catalogue.zip',
                         type: 'zip']
-        ]
-     )
-            }
-        }
+                                ]
+                             )
+                    }
+                }
         stage('Deploy') {
             steps {
-                def params = [
-                    string(name: 'version', value:"$packageVersion")
-                ]
-                build job: "catalogue-deploy", wait: true, parameters: params
-            }
-        }
-    }
+                script {
+                        def params = [
+                            string(name: 'version', value:"$packageVersion")
+                        ]
+                        build job: "catalogue-deploy", wait: true, parameters: params
+                        }
+                    }
+                }
+             }
     // post build
     post { 
         always { 
