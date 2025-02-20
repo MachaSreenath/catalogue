@@ -20,9 +20,9 @@ pipeline {
                     def packageJson = readJSON file: 'package.json' 
                     packageVersion = packageJson.version
                     echo "application version: $packageVersion"
+                    }
                 }
             }
-        }
         stage('Install Dependencies') {
             steps {
                 sh """
