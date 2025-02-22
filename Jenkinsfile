@@ -12,6 +12,11 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
     }
+    parameters {
+
+        booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
+
+    }
     // build
     stages {
         stage('Get the version') {
@@ -73,6 +78,9 @@ pipeline {
                     }
                 }
         stage('Deploy') {
+            when {
+                params.Deploy == 
+            }
             steps {
                 script {
                         def params = [
