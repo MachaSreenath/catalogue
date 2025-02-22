@@ -79,7 +79,9 @@ pipeline {
                 }
         stage('Deploy') {
             when {
-                params.Deploy == 
+                expression {
+                    params.Deploy = true
+                }
             }
             steps {
                 script {
