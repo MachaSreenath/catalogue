@@ -1,7 +1,7 @@
 #!groovy 
 @library('roboshop-shared-library') _ 
 
-// responsibility is to pass what type of application and component is this to pipeline decision.
+// here just by giving the values applicatiion and component(this are like passing parameters) then it proceeds according to these values in shared library folder.
 
 def configMap = [
     application: "nodejsVM",
