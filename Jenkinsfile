@@ -7,9 +7,10 @@ def configMap = [
     application: "nodejsVM",
     component: "catalogue"
 ]
-if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
-    pipelineDecision.decidePipeline(configMap)
-}
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main'))
+    {
+        pipelineDecision.decidePipeline(configMap)
+    }
 else{
     echo "It,s production, change request to proceed"
-}
+    }
